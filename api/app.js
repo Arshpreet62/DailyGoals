@@ -1,21 +1,13 @@
 import express from "express";
 import cors from "cors";
 
+// const express = require('express');
 let tasks = [];
 let done = [];
 const app = express();
-const PORT = 5000;
-app.use(
-  cors({
-    origin: [
-      "https://daily-goals-n266qlohr-arshpreet62s-projects.vercel.app",
-      "http://localhost:3000",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+const PORT = process.env.PORT || 5000;
+// const cors = require('cors');
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -63,14 +55,7 @@ app.delete("/delete/done/:id", (req, res) => {
   done = done.filter((t) => t.id !== parseInt(id));
   res.json({ message: "Task removed!", done });
 });
-if (!res.ok) {
-  console.error("API error:", res.status, await res.text());
-  return;
-}
 
-const data = await res.json(); // safe now
 app.listen(PORT, () => {
-  console.log(`Server running `);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
-
-export default app;

@@ -6,7 +6,7 @@ export default function Todos({ tasks, fetchData, done }) {
   const [postion, setPosition] = useState("");
 
   function handleSubmit() {
-    fetch("/api/submit", {
+    fetch("http://localhost:5000/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export default function Todos({ tasks, fetchData, done }) {
     if (postion == "") {
       alert("id required");
     } else {
-      fetch(`/api/submit/${postion}`, {
+      fetch(`http://localhost:5000/submit/${postion}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export default function Todos({ tasks, fetchData, done }) {
   }
 
   function handleTaskDone(task) {
-    fetch("/api/done", {
+    fetch("http://localhost:5000/done", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export default function Todos({ tasks, fetchData, done }) {
   }
 
   function handleTaskdel(where, id) {
-    fetch(`/api/${where}/${id}`, {
+    fetch(`http://localhost:5000/${where}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

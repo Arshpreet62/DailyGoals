@@ -5,7 +5,7 @@ export default function Body() {
   const [tasks, setTasks] = React.useState([]);
   const [done, setDone] = React.useState([]);
   const fetchData = useCallback(function () {
-    fetch("/api/")
+    fetch("http://localhost:5000")
       .then((response) => response.json())
       .then((data) => {
         setTasks(data.tasks);
