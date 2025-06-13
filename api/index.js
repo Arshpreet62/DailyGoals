@@ -63,7 +63,12 @@ app.delete("/delete/done/:id", (req, res) => {
   done = done.filter((t) => t.id !== parseInt(id));
   res.json({ message: "Task removed!", done });
 });
+if (!res.ok) {
+  console.error("API error:", res.status, await res.text());
+  return;
+}
 
+const data = await res.json(); // safe now
 app.listen(PORT, () => {
   console.log(`Server running `);
 });
