@@ -1,12 +1,10 @@
 import express from "express";
 import cors from "cors";
 
-// const express = require('express');
 let tasks = [];
 let done = [];
 const app = express();
 const PORT = 5000;
-// const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
@@ -59,3 +57,5 @@ app.delete("/delete/done/:id", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+export default app;
