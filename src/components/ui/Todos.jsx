@@ -6,7 +6,7 @@ export default function Todos({ tasks, fetchData, done }) {
   const [postion, setPosition] = useState("");
 
   function handleSubmit() {
-    fetch("http://localhost:5000/submit", {
+    fetch("https://dailygoals-nd3o.onrender.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export default function Todos({ tasks, fetchData, done }) {
     if (postion == "") {
       alert("id required");
     } else {
-      fetch(`http://localhost:5000/submit/${postion}`, {
+      fetch(`https://dailygoals-nd3o.onrender.com/submit/${postion}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export default function Todos({ tasks, fetchData, done }) {
   }
 
   function handleTaskDone(task) {
-    fetch("http://localhost:5000/done", {
+    fetch("https://dailygoals-nd3o.onrender.com/done", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export default function Todos({ tasks, fetchData, done }) {
   }
 
   function handleTaskdel(where, id) {
-    fetch(`http://localhost:5000/${where}/${id}`, {
+    fetch(`https://dailygoals-nd3o.onrender.com/${where}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
