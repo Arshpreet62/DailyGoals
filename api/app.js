@@ -5,7 +5,17 @@ let tasks = [];
 let done = [];
 const app = express();
 const PORT = 5000;
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://daily-goals-n266qlohr-arshpreet62s-projects.vercel.app",
+      "http://localhost:3000",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -55,7 +65,7 @@ app.delete("/delete/done/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running `);
 });
 
 export default app;
